@@ -1,6 +1,9 @@
 package Config;
 
+import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import javax.servlet.Filter;
 
 /**
  * Created by Administrator on 2017/7/20.
@@ -21,4 +24,10 @@ public class ConnWebInitializer extends AbstractAnnotationConfigDispatcherServle
         return new String[]{"/"};
     }
 
+    @Override
+    protected Filter[] getServletFilters() {
+        return new Filter[] {
+                new DelegatingFilterProxy("shiroFilter")
+        };
+    }
 }
