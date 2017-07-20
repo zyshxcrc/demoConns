@@ -64,13 +64,13 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         Map<String,String> shirFilterChainMap = new HashMap<>();
         shirFilterChainMap.put("/login.jsp","anon");
-        shirFilterChainMap.put("/*","authc");
+        /*shirFilterChainMap.put("*//*","authc");*/
         shiroFilterFactoryBean.setLoginUrl("/login.jsp");
         // 登录成功后要跳转的链接
-        shiroFilterFactoryBean.setSuccessUrl("/index");
+        shiroFilterFactoryBean.setSuccessUrl("/index.jsp");
 
         //未授权界面;
-        shiroFilterFactoryBean.setUnauthorizedUrl("/login");
+        shiroFilterFactoryBean.setUnauthorizedUrl("/error.jsp");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(shirFilterChainMap);
         return shiroFilterFactoryBean;
     }

@@ -1,9 +1,6 @@
 package dao;
 
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
@@ -19,8 +16,11 @@ public class MyRealm extends AuthorizingRealm {
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        String name = (String)authenticationToken.getPrincipal();
-        String password = (String)authenticationToken.getCredentials();
+        System.out.println("1");
+        UsernamePasswordToken token = (UsernamePasswordToken)authenticationToken;
+        String name = token.getUsername();
+        String password = new String(token.getPassword());
+        System.out.println(name + "+++" + password);
         if ("zyliu".equals(name)&&"123456".equals(password)){
             return new SimpleAuthenticationInfo(name,password,getName());
         }
