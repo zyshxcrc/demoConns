@@ -63,11 +63,11 @@ public class ShiroConfig {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         Map<String,String> shirFilterChainMap = new HashMap<>();
-        shirFilterChainMap.put("/login.jsp","anon");
-        /*shirFilterChainMap.put("*//*","authc");*/
+        shirFilterChainMap.put("/**","anon");
+        //shirFilterChainMap.put("/**","authc");
         shiroFilterFactoryBean.setLoginUrl("/login.jsp");
         // 登录成功后要跳转的链接
-        shiroFilterFactoryBean.setSuccessUrl("/index.jsp");
+        shiroFilterFactoryBean.setSuccessUrl("/static/view/upload.jsp");
 
         //未授权界面;
         shiroFilterFactoryBean.setUnauthorizedUrl("/error.jsp");

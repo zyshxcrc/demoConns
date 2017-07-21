@@ -25,7 +25,7 @@ public class UserLogin {
         try {
             subject.login(token);
             if (subject.isAuthenticated()) {
-                return "redirect:/";
+                return "upload";
             } else {
                 return "login";
             }

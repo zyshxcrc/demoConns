@@ -1,12 +1,15 @@
 package util;
 
+import java.net.URLEncoder;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by Administrator on 2017/7/20.
  */
 public class EncryptDecrypt {
-    public static String doMD5Format(String str) {
+    private static String salt = "{PONY}";
+    public static String doMD5Format(String str) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("MD5");
         digest.update(str.getBytes());
         byte[] mds = digest.digest();
@@ -16,17 +19,24 @@ public class EncryptDecrypt {
         }
         return  sb.toString();
     }
-    public static String doMD5Array(String str) {
+    public static String doMD5Array(String str) throws NoSuchAlgorithmException {
         char hexDigits[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
         MessageDigest digest = MessageDigest.getInstance("MD5");
         digest.update(str.getBytes());
         byte[] mds = digest.digest();
-        char[] strs = new char[32];
+        char[] mdstr = new char[32];
         int i = 0;
         for (byte b : mds) {
-            strs[i++] = hexDigits[b >>> 4 & 0xf];
-            strs[i++] = hexDigits[b & 0xf];
+            mdstr[i++] = hexDigits[b >>> 4 & 0xf];
+            mdstr[i++] = hexDigits[b & 0xf];
         }
-        return new String(strs);
+        return new String(mdstr);
+    }
+
+    public static void main(String[] args) throws Exception{
+        System.out.println(doMD5Format("000000"+salt));
+        System.out.println(doMD5Array("000000"+salt));
+        System.out.println(URLEncoder.encode("jf2fkEAW5mYfbBQ6AHO+Bg==","UTF-8"));
+        System.out.println(URLEncoder.encode("00000000000197","UTF-8"));
     }
 }
