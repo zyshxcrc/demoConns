@@ -12,5 +12,10 @@
 </head>
 <body>
     main
+    <form action="sendMail">
+        <label>name:</label><input type="text" name="name" id="name"/>
+        <label>password:</label><input type="password" name="password" id="password"/>
+        <input type="submit"/>
+    </form>
 </body>
 </html>
