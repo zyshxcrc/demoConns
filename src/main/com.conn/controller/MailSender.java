@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import service.MQProducer;
 import service.MailSenderService;
 
 /**
@@ -13,9 +14,12 @@ import service.MailSenderService;
 public class MailSender {
     @Autowired
     private MailSenderService mailSenderService;
+    @Autowired
+    private MQProducer mqProducer;
 
     @RequestMapping("/sendMail")
     public String sendMail(){
+        mqProducer.sendDataToQueue("queue_one","test");
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo("2880096403@qq.com");//收件人邮箱地址
         message.setFrom("891990586@qq.com");//收件人

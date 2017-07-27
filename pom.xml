@@ -69,6 +69,13 @@
       <artifactId>spring-context-support</artifactId>
       <version>4.3.9.RELEASE</version>
     </dependency>
+    <!--rabbitmq依赖 -->
+    <dependency>
+      <groupId>org.springframework.amqp</groupId>
+      <artifactId>spring-rabbit</artifactId>
+      <version>1.7.3.RELEASE</version>
+    </dependency>
+    <!--mail依赖-->
     <dependency>
       <groupId>javax.mail</groupId>
       <artifactId>mail</artifactId>

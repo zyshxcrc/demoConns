@@ -19,6 +19,16 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.3.9.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context:4.3.9.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.amqp:spring-rabbit:1.7.3.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-messaging:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Maven: com.rabbitmq:http-client:1.1.1.RELEASE" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.8.4" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.8.4" />
+          <element id="library" level="project" name="Maven: com.rabbitmq:amqp-client:4.0.2" />
+          <element id="library" level="project" name="Maven: org.springframework.retry:spring-retry:1.2.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.amqp:spring-amqp:1.7.3.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.3.9.RELEASE" />
           <element id="library" level="project" name="Maven: javax.mail:mail:1.4.7" />
           <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.1.32" />

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/rabbit
+                http://www.springframework.org/schema/rabbit/spring-rabbit-1.0.xsd">
+
+    <!-- 连接服务配置  -->
+    <rabbit:connection-factory id="connectionFactory" host="localhost" username="guest"
+                               password="guest" port="5672"  virtual-host="/"/>
+
+    <rabbit:admin connection-factory="connectionFactory"/>
+
+    <!-- queue 队列声明-->
+    <rabbit:queue id="queue_one"/>
+
+
+    <!-- exchange queue binging key 绑定 -->
+    <rabbit:direct-exchange name="my-mq-exchange">
+        <rabbit:bindings>
+            <rabbit:binding queue="queue_one" key="queue_one_key"/>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+    <!-- 消息对象json转换类 -->
+    <bean id="jsonMessageConverter" class="org.springframework.amqp.support.converter.Jackson2JsonMessageConverter" />
+
+    <!-- spring template声明-->
+    <rabbit:template exchange="my-mq-exchange" id="amqpTemplate"  connection-factory="connectionFactory"
+        routing-key="queue_one_key"/>
+
+
+    <rabbit:listener-container connection-factory="connectionFactory">
+        <rabbit:listener queue-names="queue_one" ref="queueListener" method="onMessage"/>
+    </rabbit:listener-container>
+</beans>
