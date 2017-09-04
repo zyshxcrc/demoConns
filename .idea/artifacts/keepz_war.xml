@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="keepz:war">
+    <output-path>$PROJECT_DIR$/keepz/target</output-path>
+    <root id="archive" name="keepz.war">
+      <element id="artifact" artifact-name="keepz:war exploded" />
+    </root>
+  </artifact>
+</component>
